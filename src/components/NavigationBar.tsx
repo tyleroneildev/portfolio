@@ -29,6 +29,7 @@ const NavigationBar = () => {
   }, [location.pathname]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     updateUnderlinePosition();
   }, [location.pathname]);
 

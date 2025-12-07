@@ -5,11 +5,11 @@
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
-![Render](https://img.shields.io/badge/Render-404D59?style=for-the-badge)
+[![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?logo=vercel&logoColor=white)](#)
 
 ## Description
 
-My portfolio website built using React (Vite), Typescript, styled with Tailwind CSS, and hosted with Render. The site is designed to showcase my projects, skills, and experiences.
+My portfolio website built using React (Vite), Typescript, styled with Tailwind CSS, and hosted on Vercel. The site is designed to showcase my projects, skills, and experiences.
 
 ## Link
 
