@@ -28,7 +28,7 @@ const Profile = () => {
       <img
         src={headshot}
         alt="Tyler O'Neil's profile photo"
-        className='mb-4 h-[140px] w-[140px] rounded-full border-4 border-gray-700 object-cover md:h-[160px] md:w-[160px] lg:h-[180px] lg:w-[180px]'
+        className='mb-4 h-[140px] w-[140px] rounded-full border-4 border-gray-700 object-cover md:h-40 md:w-40 lg:h-[180px] lg:w-[180px]'
       />
 
       <h1 className='text-center text-xl leading-tight font-bold md:text-2xl lg:text-3xl'>Tyler O'Neil</h1>
