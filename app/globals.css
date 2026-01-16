@@ -32,3 +32,84 @@ body {
   font-family: "Space Grotesk", "Helvetica Neue", sans-serif;
   min-height: 100vh;
 }
+
+.blog-prose {
+  color: #d6d1c8;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.blog-prose h1,
+.blog-prose h2,
+.blog-prose h3,
+.blog-prose h4 {
+  font-family: "Space Grotesk", "Helvetica Neue", sans-serif;
+  color: #f3f1ed;
+  letter-spacing: 0.01em;
+  margin-top: 2.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.blog-prose h2 {
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+}
+
+.blog-prose h3 {
+  font-size: clamp(1.4rem, 1.8vw, 1.9rem);
+}
+
+.blog-prose p {
+  margin-top: 1rem;
+}
+
+.blog-prose a {
+  color: #c7a0ff;
+  border-bottom: 1px solid transparent;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+
+.blog-prose a:hover {
+  color: #e0c7ff;
+  border-color: #e0c7ff;
+}
+
+.blog-prose ul,
+.blog-prose ol {
+  margin-top: 1rem;
+  padding-left: 1.4rem;
+}
+
+.blog-prose ul {
+  list-style: disc;
+}
+
+.blog-prose ol {
+  list-style: decimal;
+}
+
+.blog-prose li + li {
+  margin-top: 0.4rem;
+}
+
+.blog-prose code {
+  font-family: "Geist Mono", "Courier New", monospace;
+  background: #1b1b1b;
+  border: 1px solid #2a2a2a;
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.3rem;
+}
+
+.blog-prose pre {
+  margin-top: 1.5rem;
+  background: #1b1b1b;
+  border: 1px solid #2a2a2a;
+  border-radius: 0.75rem;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+}
+
+.blog-prose pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+}

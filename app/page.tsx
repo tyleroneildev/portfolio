@@ -1,6 +1,10 @@
 import Link from "next/link";
 
+import { getAllBlogs } from "@/lib/blog";
+
 export default function Home() {
+  const posts = getAllBlogs().slice(0, 3);
+
   return (
     <div className='min-h-screen px-8 pb-32 pt-24 sm:px-6'>
       <main className='mx-auto grid w-full max-w-225 gap-6'>
@@ -14,9 +18,9 @@ export default function Home() {
         </header>
 
         <ul className='grid list-none gap-2 pl-0 text-base text-[#f3f1ed]'>
-          <li>currently: software developer @ exchange solutions</li>
+          <li>software developer @ exchange solutions</li>
+          <li>mcmaster btech software engineering</li>
           <li>
-            building:{" "}
             <Link
               className='border-b border-transparent pb-0.5 transition-colors duration-200 hover:border-purple-300 hover:text-purple-300'
               href='https://nest.software'
@@ -26,8 +30,7 @@ export default function Home() {
               nest (personal finance saas)
             </Link>{" "}
           </li>
-          <li>education: mcmaster btech software engineering</li>
-          <li>interests: fintech, personal finance, investing</li>
+          <li>fintech, personal finance, investing</li>
         </ul>
 
         <nav className='flex flex-wrap gap-3 text-[0.95rem]'>
@@ -57,12 +60,35 @@ export default function Home() {
 
         <section>
           <h2 className='mb-2 text-[0.9rem] uppercase tracking-[0.08em] text-[#a5a19a]'>
-            Selected Work
+            Blog
           </h2>
-          <ul className='grid list-none gap-2 p-0 text-[#f3f1ed]'>
-            <li>Nest → short 1-line description</li>
-            <li>Duordle → short 1-line description</li>
+          <ul className='grid list-none gap-0 rounded-2xl border border-[#2a2a2a] bg-[#1b1b1b] p-0 text-[#f3f1ed]'>
+            {posts.map((post) => (
+              <li
+                key={post.slug}
+                className='group grid gap-2 border-b border-[#2a2a2a] px-5 py-4 last:border-b-0 sm:flex sm:items-center sm:justify-between'
+              >
+                <div className='grid gap-1'>
+                  <Link
+                    className='text-[1.05rem] font-medium text-[#c7a0ff] transition-colors duration-200 group-hover:text-[#e0c7ff]'
+                    href={`/blog/${post.slug}`}
+                  >
+                    {post.title}
+                  </Link>
+                  <p className='text-sm text-[#a5a19a]'>{post.description}</p>
+                </div>
+                <span className='text-xl text-[#4b4b4b] transition-colors duration-200 group-hover:text-[#c7a0ff]'>
+                  →
+                </span>
+              </li>
+            ))}
           </ul>
+          <Link
+            className='mt-3 inline-flex border-b border-transparent pb-0.5 text-sm text-[#a5a19a] transition-colors duration-200 hover:border-[#c7a0ff] hover:text-[#c7a0ff]'
+            href='/blog'
+          >
+            view all posts →
+          </Link>
         </section>
       </main>
     </div>
