@@ -21,16 +21,16 @@ export default function Home() {
           <li>software developer @ exchange solutions</li>
           <li>mcmaster btech software engineering</li>
           <li>
+            building{" "}
             <Link
               className='border-b border-transparent pb-0.5 transition-colors duration-200 hover:border-purple-300 hover:text-purple-300'
               href='https://nest.software'
               target='_blank'
               rel='noreferrer'
             >
-              nest (personal finance saas)
-            </Link>{" "}
+              nest.software
+            </Link>
           </li>
-          <li>fintech, personal finance, investing</li>
         </ul>
 
         <nav className='flex flex-wrap gap-3 text-[0.95rem]'>

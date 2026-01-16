@@ -6,6 +6,29 @@ import { getAllBlogs } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Blog | Tyler O'Neil",
   description: "Writing about software, finance, and building products.",
+  openGraph: {
+    title: "Blog | Tyler O'Neil",
+    description: "Writing about software, finance, and building products.",
+    url: "https://tyleroneil.dev/blog",
+    siteName: "Tyler O'Neil",
+    type: "website",
+    images: [
+      {
+        url: "/api/og?title=Blog&subtitle=Writing%20about%20software%2C%20finance%2C%20and%20building%20products.&type=Blog",
+        width: 1200,
+        height: 630,
+        alt: "Tyler O'Neil",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Tyler O'Neil",
+    description: "Writing about software, finance, and building products.",
+    images: [
+      "/api/og?title=Blog&subtitle=Writing%20about%20software%2C%20finance%2C%20and%20building%20products.&type=Blog",
+    ],
+  },
 };
 
 export default function BlogIndexPage() {
@@ -16,9 +39,6 @@ export default function BlogIndexPage() {
       <main className='mx-auto grid w-full max-w-225 gap-10'>
         <header className='grid gap-3'>
           <div className='flex flex-wrap items-center justify-between gap-3'>
-            <p className='text-[0.9rem] uppercase tracking-[0.08em] text-[#a5a19a]'>
-              Blog
-            </p>
             <Link
               className='text-sm uppercase tracking-[0.08em] text-[#a5a19a] transition-colors duration-200 hover:text-[#f3f1ed]'
               href='/'

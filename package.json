@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@vercel/og": "^0.8.6",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "next": "16.1.2",
