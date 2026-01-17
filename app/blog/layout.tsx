@@ -1,7 +1,7 @@
-import BlogFooter from "@/components/blog/BlogFooter";
+import BlogFooter from '@/components/blog/BlogFooter';
 
 export default function BlogLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {

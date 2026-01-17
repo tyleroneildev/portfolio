@@ -1,28 +1,26 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { getAllBlogs } from "@/lib/blog";
-import { formatBlogDate } from "@/lib/utils/date";
+import { getAllBlogs } from '@/lib/blog';
+import { formatBlogDate } from '@/lib/utils/date';
 
 export default function Home() {
   const posts = getAllBlogs().slice(0, 3);
 
   return (
-    <div className='min-h-screen px-8 pb-32 pt-24 sm:px-6'>
+    <div className='min-h-screen px-8 pt-24 pb-32 sm:px-6'>
       <main className='mx-auto grid w-full max-w-225 gap-6'>
         <header className='grid gap-2'>
           <h1 className="font-['Instrument Serif'] text-[clamp(2.4rem,3vw,3.2rem)] tracking-[0.01em]">
             Tyler O&apos;Neil
           </h1>
-          <p className='text-base tracking-[0.08em] text-[#a5a19a]'>
-            Toronto, Ontario
-          </p>
+          <p className='text-base tracking-[0.08em] text-[#a5a19a]'>Toronto, Ontario</p>
         </header>
 
         <ul className='grid list-none gap-2 pl-0 text-base text-[#f3f1ed]'>
           <li>software developer @ exchange solutions</li>
           <li>mcmaster btech software engineering</li>
           <li>
-            building{" "}
+            building{' '}
             <Link
               className='border-b border-transparent pb-0.5 transition-colors duration-200 hover:border-purple-300 hover:text-purple-300'
               href='https://nest.software'
@@ -60,9 +58,7 @@ export default function Home() {
         </nav>
 
         <section>
-          <h2 className='mb-2 text-[0.9rem] uppercase tracking-[0.08em] text-[#a5a19a]'>
-            Blog
-          </h2>
+          <h2 className='mb-2 text-[0.9rem] tracking-[0.08em] text-[#a5a19a] uppercase'>Blog</h2>
           <ul className='grid list-none gap-0 rounded-2xl border border-[#2a2a2a] bg-[#1b1b1b] p-0 text-[#f3f1ed]'>
             {posts.map((post) => (
               <li
@@ -76,9 +72,7 @@ export default function Home() {
                   >
                     {post.title}
                   </Link>
-                  <p className='text-[0.7rem] uppercase tracking-[0.2em] text-[#6f6f6f]'>
-                    {formatBlogDate(post.date)}
-                  </p>
+                  <p className='text-[0.7rem] tracking-[0.2em] text-[#6f6f6f] uppercase'>{formatBlogDate(post.date)}</p>
                   <p className='text-sm text-[#a5a19a]'>{post.description}</p>
                 </div>
                 <span className='text-xl text-[#4b4b4b] transition-colors duration-200 group-hover:text-[#c7a0ff]'>

@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600&display=swap");
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600&display=swap');
+@import 'tailwindcss';
 
 :root {
   --background: #232323;
@@ -29,7 +29,7 @@ body {
   background-color: var(--background);
   background-image: none;
   color: var(--foreground);
-  font-family: "Space Grotesk", "Helvetica Neue", sans-serif;
+  font-family: 'Space Grotesk', 'Helvetica Neue', sans-serif;
   min-height: 100vh;
 }
 
@@ -43,7 +43,7 @@ body {
 .blog-prose h2,
 .blog-prose h3,
 .blog-prose h4 {
-  font-family: "Space Grotesk", "Helvetica Neue", sans-serif;
+  font-family: 'Space Grotesk', 'Helvetica Neue', sans-serif;
   color: #f3f1ed;
   letter-spacing: 0.01em;
   margin-top: 2.2rem;
@@ -65,7 +65,9 @@ body {
 .blog-prose a {
   color: #c7a0ff;
   border-bottom: 1px solid transparent;
-  transition: color 200ms ease, border-color 200ms ease;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease;
 }
 
 .blog-prose a:hover {
@@ -92,7 +94,7 @@ body {
 }
 
 .blog-prose code {
-  font-family: "Geist Mono", "Courier New", monospace;
+  font-family: 'Geist Mono', 'Courier New', monospace;
   background: #1b1b1b;
   border: 1px solid #2a2a2a;
   border-radius: 0.4rem;

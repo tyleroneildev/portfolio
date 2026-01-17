@@ -1,14 +1,14 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
-import matter from "gray-matter";
-import { compileMDX } from "next-mdx-remote/rsc";
-import type { ReactNode } from "react";
-import GithubSlugger from "github-slugger";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
+import GithubSlugger from 'github-slugger';
+import matter from 'gray-matter';
+import { compileMDX } from 'next-mdx-remote/rsc';
+import type { ReactNode } from 'react';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
-import StockViewComparison from "@/components/blog/StockViewComparison";
+import StockViewComparison from '@/components/blog/StockViewComparison';
 
 export type TocItem = {
   id: string;
@@ -28,9 +28,9 @@ export type BlogPost = BlogMeta & {
   toc: TocItem[];
 };
 
-const BLOG_DIR = path.join(process.cwd(), "content", "blog");
+const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 const mdxComponents = {
-  StockViewComparison,
+  StockViewComparison
 };
 
 function ensureBlogDir() {
@@ -42,9 +42,9 @@ function ensureBlogDir() {
 function buildExcerpt(markdown: string) {
   const lines = markdown
     .split(/\r?\n/)
-    .map((line) => line.replace(/^[#>*-\d.\s]+/, "").trim())
+    .map((line) => line.replace(/^[#>*-\d.\s]+/, '').trim())
     .filter(Boolean);
-  const sentence = lines.join(" ").replace(/\s+/g, " ").trim();
+  const sentence = lines.join(' ').replace(/\s+/g, ' ').trim();
   return sentence.slice(0, 160);
 }
 
@@ -57,7 +57,7 @@ function extractToc(markdown: string) {
     .map((match) => ({
       level: match[1].length,
       text: match[2].trim(),
-      id: slugger.slug(match[2].trim()),
+      id: slugger.slug(match[2].trim())
     }));
 }
 
@@ -65,7 +65,7 @@ function readPostFile(slug: string) {
   ensureBlogDir();
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
-  const raw = fs.readFileSync(filePath, "utf8");
+  const raw = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(raw);
   return { data, content };
 }
@@ -74,8 +74,8 @@ export function getBlogSlugs() {
   ensureBlogDir();
   return fs
     .readdirSync(BLOG_DIR)
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => file.replace(/\.mdx$/, ""));
+    .filter((file) => file.endsWith('.mdx'))
+    .map((file) => file.replace(/\.mdx$/, ''));
 }
 
 export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
@@ -92,9 +92,9 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
     options: {
       mdxOptions: {
         remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypeSlug],
-      },
-    },
+        rehypePlugins: [rehypeSlug]
+      }
+    }
   });
 
   return {
@@ -103,7 +103,7 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost | null> {
     description,
     date: data.date as string | undefined,
     content: compiledContent,
-    toc,
+    toc
   };
 }
 
@@ -118,8 +118,8 @@ export function getAllBlogs(): BlogMeta[] {
           slug,
           title: (data.title as string) || slug,
           description: (data.description as string) || buildExcerpt(content),
-          date: data.date as string | undefined,
-        },
+          date: data.date as string | undefined
+        }
       ];
     })
     .sort((a, b) => {
