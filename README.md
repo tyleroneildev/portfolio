@@ -2,7 +2,7 @@
 
 ## Description
 
-My portfolio website designed to showcase my projects, skills, and experiences.
+Personal site with software projects and writing.
 
 ## Link
 
