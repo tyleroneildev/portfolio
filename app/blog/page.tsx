@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { getAllBlogs } from "@/lib/blog";
+import { formatBlogDate } from "@/lib/utils/date";
 
 export const metadata: Metadata = {
   title: "Blog | Tyler O'Neil",
@@ -68,6 +69,9 @@ export default function BlogIndexPage() {
                   >
                     {post.title}
                   </Link>
+                  <p className='text-xs uppercase tracking-[0.2em] text-[#6f6f6f]'>
+                    {formatBlogDate(post.date)}
+                  </p>
                   <p className='text-sm text-[#a5a19a]'>{post.description}</p>
                 </div>
                 <span className='text-xl text-[#4b4b4b] transition-colors duration-200 group-hover:text-[#c7a0ff]'>

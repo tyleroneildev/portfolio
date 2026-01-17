@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getBlogBySlug, getBlogSlugs } from "@/lib/blog";
+import { formatBlogDate } from "@/lib/utils/date";
 import TableOfContents from "@/components/blog/TableOfContents";
 
 type BlogPostPageProps = {
@@ -85,7 +86,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </p>
           {post.date ? (
             <p className='text-sm uppercase tracking-[0.08em] text-[#a5a19a]'>
-              {post.date}
+              {formatBlogDate(post.date)}
             </p>
           ) : null}
         </header>

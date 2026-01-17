@@ -9,7 +9,7 @@ export default function BlogFooter() {
           <a
             aria-label="Tyler O'Neil on LinkedIn"
             className='transition-colors hover:text-[#f3f1ed]'
-            href='https://www.linkedin.com/in/tyleroneil/'
+            href='https://www.linkedin.com/in/tyler-oneil-dev/'
             rel='noreferrer'
             target='_blank'
           >
@@ -26,7 +26,7 @@ export default function BlogFooter() {
           <a
             aria-label="Tyler O'Neil on GitHub"
             className='transition-colors hover:text-[#f3f1ed]'
-            href='https://github.com/'
+            href='https://github.com/tyleroneildev'
             rel='noreferrer'
             target='_blank'
           >
