@@ -8,6 +8,7 @@ import GithubSlugger from "github-slugger";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
+import StockViewComparison from "@/components/blog/StockViewComparison";
 
 export type TocItem = {
   id: string;
@@ -28,7 +29,9 @@ export type BlogPost = BlogMeta & {
 };
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
-const mdxComponents = {};
+const mdxComponents = {
+  StockViewComparison,
+};
 
 function ensureBlogDir() {
   if (!fs.existsSync(BLOG_DIR)) {
