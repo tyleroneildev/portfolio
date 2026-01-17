@@ -1,8 +1,10 @@
-import Link from "next/link";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-import { getBlogBySlug, getBlogSlugs } from "@/lib/blog";
+import TableOfContents from '@/components/blog/TableOfContents';
+import { getBlogBySlug, getBlogSlugs } from '@/lib/blog';
+import { formatBlogDate } from '@/lib/utils/date';
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -12,9 +14,7 @@ export async function generateStaticParams() {
   return getBlogSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = await getBlogBySlug(slug);
   if (!post) return {};
@@ -27,32 +27,26 @@ export async function generateMetadata({
       description: post.description,
       url: `https://tyleroneil.dev/blog/${post.slug}`,
       siteName: "Tyler O'Neil",
-      type: "article",
+      type: 'article',
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(
-            post.title,
-          )}&subtitle=${encodeURIComponent(
-            post.description,
+          url: `/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(
+            post.description
           )}&type=Blog`,
           width: 1200,
           height: 630,
-          alt: post.title,
-        },
-      ],
+          alt: post.title
+        }
+      ]
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: post.title,
       description: post.description,
       images: [
-        `/api/og?title=${encodeURIComponent(
-          post.title,
-        )}&subtitle=${encodeURIComponent(
-          post.description,
-        )}&type=Blog`,
-      ],
-    },
+        `/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.description)}&type=Blog`
+      ]
+    }
   };
 }
 
@@ -66,10 +60,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const tocItems = post.toc.filter((item) => item.level <= 3);
 
   return (
-    <div className='min-h-screen px-8 pb-32 pt-24 sm:px-6'>
+    <div className='px-8 pt-24 pb-40 sm:px-6'>
       <main className='mx-auto grid w-full max-w-225 gap-10'>
         <Link
-          className='text-sm uppercase tracking-[0.08em] text-[#a5a19a] transition-colors duration-200 hover:text-[#f3f1ed]'
+          className='text-sm tracking-[0.08em] text-[#a5a19a] uppercase transition-colors duration-200 hover:text-[#f3f1ed]'
           href='/blog'
         >
           ← Back to blog
@@ -79,44 +73,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <h1 className="font-['Instrument Serif'] text-[clamp(2.6rem,3.2vw,3.8rem)] tracking-[0.01em]">
             {post.title}
           </h1>
-          <p className='max-w-2xl text-base text-[#cfcac2]'>
-            {post.description}
-          </p>
+          <p className='max-w-2xl text-base text-[#cfcac2]'>{post.description}</p>
           {post.date ? (
-            <p className='text-sm uppercase tracking-[0.08em] text-[#a5a19a]'>
-              {post.date}
-            </p>
+            <p className='text-sm tracking-[0.08em] text-[#a5a19a] uppercase'>{formatBlogDate(post.date)}</p>
           ) : null}
         </header>
 
         <section className='grid gap-10 lg:grid-cols-[minmax(0,1fr)_220px]'>
           {tocItems.length ? (
-            <aside className='order-1 lg:order-2 lg:sticky lg:top-24'>
-              <div className='rounded-2xl border border-[#2a2a2a] bg-[#1b1b1b] p-5'>
-                <p className='text-xs uppercase tracking-[0.08em] text-[#a5a19a]'>
-                  On this page
-                </p>
-                <ul className='mt-4 grid gap-2 text-sm text-[#cfcac2]'>
-                  {tocItems.map((item) => (
-                    <li
-                      key={item.id}
-                      className={item.level === 3 ? "pl-3" : undefined}
-                    >
-                      <a
-                        className='border-b border-transparent pb-0.5 transition-colors duration-200 hover:border-[#c7a0ff] hover:text-[#c7a0ff]'
-                        href={`#${item.id}`}
-                      >
-                        {item.text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <aside className='order-1 lg:sticky lg:top-24 lg:order-2 lg:max-h-[calc(100vh-6rem)] lg:self-start'>
+              <TableOfContents items={tocItems} />
             </aside>
           ) : null}
-          <article className='order-2 blog-prose lg:order-1'>
-            {post.content}
-          </article>
+          <article className='blog-prose order-2 lg:order-1'>{post.content}</article>
         </section>
       </main>
     </div>
