@@ -35,7 +35,7 @@ export default function BlogIndexPage() {
   const posts = getAllBlogs();
 
   return (
-    <div className='min-h-screen px-8 pb-32 pt-24 sm:px-6'>
+    <div className='px-8 pb-40 pt-24 sm:px-6'>
       <main className='mx-auto grid w-full max-w-225 gap-10'>
         <header className='grid gap-3'>
           <div className='flex flex-wrap items-center justify-between gap-3'>

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { getBlogBySlug, getBlogSlugs } from "@/lib/blog";
+import TableOfContents from "@/components/blog/TableOfContents";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -66,7 +67,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const tocItems = post.toc.filter((item) => item.level <= 3);
 
   return (
-    <div className='min-h-screen px-8 pb-32 pt-24 sm:px-6'>
+    <div className='px-8 pb-40 pt-24 sm:px-6'>
       <main className='mx-auto grid w-full max-w-225 gap-10'>
         <Link
           className='text-sm uppercase tracking-[0.08em] text-[#a5a19a] transition-colors duration-200 hover:text-[#f3f1ed]'
@@ -91,27 +92,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <section className='grid gap-10 lg:grid-cols-[minmax(0,1fr)_220px]'>
           {tocItems.length ? (
-            <aside className='order-1 lg:order-2 lg:sticky lg:top-24'>
-              <div className='rounded-2xl border border-[#2a2a2a] bg-[#1b1b1b] p-5'>
-                <p className='text-xs uppercase tracking-[0.08em] text-[#a5a19a]'>
-                  On this page
-                </p>
-                <ul className='mt-4 grid gap-2 text-sm text-[#cfcac2]'>
-                  {tocItems.map((item) => (
-                    <li
-                      key={item.id}
-                      className={item.level === 3 ? "pl-3" : undefined}
-                    >
-                      <a
-                        className='border-b border-transparent pb-0.5 transition-colors duration-200 hover:border-[#c7a0ff] hover:text-[#c7a0ff]'
-                        href={`#${item.id}`}
-                      >
-                        {item.text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <aside className='order-1 lg:order-2 lg:sticky lg:top-24 lg:max-h-[calc(100vh-6rem)] lg:self-start'>
+              <TableOfContents items={tocItems} />
             </aside>
           ) : null}
           <article className='order-2 blog-prose lg:order-1'>
