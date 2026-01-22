@@ -47,7 +47,7 @@ function simulateFeeDrag(params: {
 export default function FeeComparison() {
   const [years, setYears] = useState(30);
   const annualReturn = 0.07;
-  const startingAmount = 10000;
+  const startingAmount = 0;
   const monthlyContribution = 500;
 
   const results = useMemo(() => {
@@ -84,7 +84,7 @@ export default function FeeComparison() {
           <div>
             <h2 className='text-sm font-semibold tracking-[0.18em] text-[#e0e0e0] uppercase'>Fees add up</h2>
             <p className='text-[11px] font-semibold tracking-[0.14em] text-[#d7d7d7] uppercase'>
-              Starts at {currencyFormatter.format(startingAmount)} · 7% return
+              7% return · $500/month invested
             </p>
           </div>
         </div>
@@ -105,28 +105,34 @@ export default function FeeComparison() {
         </div>
 
         <div className='mt-4 grid gap-3 md:grid-cols-2'>
-          <div className='rounded-xl border border-[#2a2a2a] bg-[#191919] p-3'>
-            <div className='flex flex-wrap items-center justify-between gap-2'>
-              <p className='text-[11px] tracking-[0.18em] text-[#7b7b7b] uppercase'>Low cost index fund</p>
+          <div className='rounded-xl border border-[#2a2a2a] bg-[#191919] p-4'>
+            <div className='flex items-start justify-between gap-3'>
+              <p className='text-[11px] leading-tight tracking-[0.18em] text-[#7b7b7b] uppercase'>
+                Low cost index fund
+              </p>
               <span className={[chipBase, 'text-[#9a9a9a]'].join(' ')}>0.21% MER</span>
             </div>
-            <p className='mt-2 text-lg font-semibold text-[#e0e0e0]'>
-              {currencyFormatter.format(results.index.endingValue)}
-            </p>
-            <p className='mt-1 text-xs text-[#22c55e]'>Fees paid {currencyFormatter.format(results.index.totalFees)}</p>
+            <div className='mt-2 flex flex-col gap-1'>
+              <p className='text-lg font-semibold text-[#e0e0e0]'>
+                {currencyFormatter.format(results.index.endingValue)}
+              </p>
+              <p className='text-xs text-[#22c55e]'>Fees paid {currencyFormatter.format(results.index.totalFees)}</p>
+            </div>
           </div>
 
-          <div className='rounded-xl border border-[#2a2a2a] bg-[#191919] p-3'>
-            <div className='flex flex-wrap items-center justify-between gap-2'>
-              <p className='text-[11px] tracking-[0.18em] text-[#7b7b7b] uppercase'>Typical mutual fund</p>
+          <div className='rounded-xl border border-[#2a2a2a] bg-[#191919] p-4'>
+            <div className='flex items-start justify-between gap-3'>
+              <p className='text-[11px] leading-tight tracking-[0.18em] text-[#7b7b7b] uppercase'>
+                Typical mutual fund
+              </p>
               <span className={[chipBase, 'text-[#9a9a9a]'].join(' ')}>2.00% MER</span>
             </div>
-            <p className='mt-2 text-lg font-semibold text-[#e0e0e0]'>
-              {currencyFormatter.format(results.mutual.endingValue)}
-            </p>
-            <p className='mt-1 text-xs text-[#ef4444]'>
-              Fees paid {currencyFormatter.format(results.mutual.totalFees)}
-            </p>
+            <div className='mt-2 flex flex-col gap-1'>
+              <p className='text-lg font-semibold text-[#e0e0e0]'>
+                {currencyFormatter.format(results.mutual.endingValue)}
+              </p>
+              <p className='text-xs text-[#ef4444]'>Fees paid {currencyFormatter.format(results.mutual.totalFees)}</p>
+            </div>
           </div>
         </div>
 
