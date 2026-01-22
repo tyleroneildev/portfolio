@@ -8,6 +8,7 @@ import type { ReactNode } from 'react';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
+import FeeComparison from '@/components/blog/FeeComparison';
 import StockViewComparison from '@/components/blog/StockViewComparison';
 
 export type TocItem = {
@@ -30,6 +31,7 @@ export type BlogPost = BlogMeta & {
 
 const BLOG_DIR = path.join(process.cwd(), 'content', 'blog');
 const mdxComponents = {
+  FeeComparison,
   StockViewComparison
 };
 
